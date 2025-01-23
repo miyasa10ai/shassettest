@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=540 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=720 height=1280 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -52,12 +52,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/37dbd8502d0177526b0972d01599ae2f.loader.js";
+      var loaderUrl = buildUrl + "/43e4b6c417bd833ebcba2bc1bcf65aee.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/1eaa16624c45cf2e0a370b8ac087ad8c.data.unityweb",
+        dataUrl: buildUrl + "/bec2a1f4b1ac35b5aadd953b6ac0cfb6.data.unityweb",
         frameworkUrl: buildUrl + "/e5b11bad88b53cad39929af92dcc15a3.framework.js.unityweb",
-        codeUrl: buildUrl + "/4ab0d42ac6392dd5d70cbf8f5ef4f05c.wasm.unityweb",
+        codeUrl: buildUrl + "/a92716d68028cdc8d04e4650968fb4a6.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "TestComp",
         productName: "FaceDetectTest",
@@ -98,8 +98,8 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "540px";
+        canvas.style.width = "720px";
+        canvas.style.height = "1280px";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";
