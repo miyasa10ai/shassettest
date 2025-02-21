@@ -6,7 +6,7 @@
     <title>Unity Web Player | Web Face Camera App</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=432 height=768 tabindex="-1" style="width: 432px; height: 768px; background: #231F20"></canvas>
+    <canvas id="unity-canvas" width=720 height=1280 tabindex="-1" style="width: 720px; height: 1280px; background: #231F20"></canvas>
     <script src="Build/WebGL.loader.js"></script>
     <script>
 
@@ -23,8 +23,8 @@
                 winHeight = winHeight - barHeight - barHeightMargin;
             }
             const winWidth = window.innerWidth;
-            const appWidth = 1280/*"432"*/;
-            const appHeight = 720/*"768"*/;
+            const appWidth = canvas.width/*"720"*/;
+            const appHeight = canvas.height/*"1280"*/;
             const scale = Math.min((winWidth / appWidth), (winHeight / appHeight));
             const fixWidth = (appWidth * scale);
             const fixHeight = (appHeight * scale);
@@ -62,6 +62,8 @@
             isMobile = true;
         }
         else {
+            var container = document.querySelector("#unity-container");
+            var canvas = document.querySelector("#unity-canvas");
 
             fitWindowCanvasSize();
         }
