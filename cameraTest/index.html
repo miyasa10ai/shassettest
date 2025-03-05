@@ -52,17 +52,17 @@
             meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
             document.getElementsByTagName('head')[0].appendChild(meta);
 
-            //change
-            document.querySelector("#unity-container").className = "unity-mobile";
-            canvas.className = "unity-mobile";
+            ////change
+            //document.querySelector("#unity-container").className = "unity-mobile";
+            //canvas.className = "unity-mobile";
 
             //original
-            //var canvas = document.querySelector("#unity-canvas");
-            //canvas.style.width = "100%";
-            //canvas.style.height = "100%";
-            //canvas.style.position = "fixed";
-            //
-            //document.body.style.textAlign = "left";
+            var canvas = document.querySelector("#unity-canvas");
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+            canvas.style.position = "fixed";
+            
+            document.body.style.textAlign = "left";
 
             isMobile = true;
         }
