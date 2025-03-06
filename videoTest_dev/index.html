@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
-  <body>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=720 height=1280 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
@@ -49,13 +49,46 @@
         updateBannerVisibility();
       }
 
+        //ウインドウサイズに合わせキャンバスサイズを変更
+        function fitWindowCanvasSize() {
+
+            var winHeight = window.innerHeight;
+            const isViewUnderBar = true;  //falseにすると下部のバーが画面外に表示
+            if (isViewUnderBar) {
+                const barHeight = 18 * 2;            //下部のバーサイズ
+                const barHeightMargin = 10 * 2;      //下部の追加余白サイズ
+                winHeight = winHeight - barHeight - barHeightMargin;
+            }
+            const winWidth = window.innerWidth;
+            const appWidth = "720";
+            const appHeight = "1280";
+            const scale = Math.min((winWidth / appWidth), (winHeight / appHeight));
+            const fixWidth = (appWidth * scale);
+            const fixHeight = (appHeight * scale);
+
+            canvas.style.width = fixWidth + 'px';
+            canvas.style.height = fixHeight + 'px';
+        }
+        //ウインドウのリサイズ時の処理
+        function windowResizeEvent() {
+            var timeoutId = 0;
+            const resizeDelay = 300;  //リサイズが完了したと判断する時間
+            window.onresize = () => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    //リサイズ終了時の処理
+                    fitWindowCanvasSize();
+                }, resizeDelay);
+            };
+        }
+
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/20250306d.loader.js";
+      var loaderUrl = buildUrl + "/20250306aa.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/20250306d.data.unityweb",
-        frameworkUrl: buildUrl + "/20250306d.framework.js.unityweb",
-        codeUrl: buildUrl + "/20250306d.wasm.unityweb",
+        dataUrl: buildUrl + "/20250306aa.data.unityweb",
+        frameworkUrl: buildUrl + "/20250306aa.framework.js.unityweb",
+        codeUrl: buildUrl + "/20250306aa.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "TestComp",
         productName: "WEB3D VIEWER",
@@ -93,11 +126,15 @@
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
 
-
+         // スマホブラウザでも呼ぶようにする
+          fitWindowCanvasSize();
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
         canvas.style.width = "720px";
         canvas.style.height = "1280px";
+
+         // スマホブラウザでも呼ぶようにする
+          fitWindowCanvasSize();
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";
