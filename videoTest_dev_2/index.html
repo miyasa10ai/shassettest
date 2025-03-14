@@ -10,6 +10,8 @@
   </head>
   <body>
     <input id="fileInput" type="file" accept="image/*" style="display: none;">
+
+
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=720 height=1280 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
@@ -110,6 +112,7 @@
         createUnityInstance(canvas, config, (progress) => {
           document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
               }).then((unityInstance) => {
+		window.unityInstance = unityInstance;
                 document.querySelector("#unity-loading-bar").style.display = "none";
 
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
